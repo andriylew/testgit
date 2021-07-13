@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    php-apache:
+        container_name: php-apache
+        build: php
+        links:
+            - "db:database"
+        depends_on:
+            - db
+        ports:
+            - 8000:80
+    db:
+        container_name: db
+        build: mariadb
+        ports:
+            - "9906:3306"
+
